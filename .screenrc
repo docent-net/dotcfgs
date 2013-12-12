@@ -1,0 +1,11 @@
+autodetach on
+startup_message off
+bell 'bell in window[%]'
+
+caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%? %{kc}%=%c:%s %Y-%m-%d"
+
+defscrollback 100000
+defencoding UTF-8
+defutf8 on
+
+shelltitle "$ |bash"
