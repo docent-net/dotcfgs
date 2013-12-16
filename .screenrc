@@ -2,10 +2,21 @@ autodetach on
 startup_message off
 bell 'bell in window[%]'
 
-caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%? %{kc}%=%c:%s %Y-%m-%d"
+hardstatus alwayslastline "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%? %{kc}%=%c:%s %Y-%m-%d"
+#'%{wk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %c ]%{W}'
+nonblock on
+altscreen on
+setenv LC_CTYPE en_US.UTF-8
 
 defscrollback 100000
 defencoding UTF-8
 defutf8 on
 
 shelltitle "$ |bash"
+msgminwait 0
+
+screen -t irc 0 irssi --connect irc.freenode.net
+screen -t finch 1 finch
+screen -t mutt 2 mutt
+screen -t zsh 3 hostname
+select 0
