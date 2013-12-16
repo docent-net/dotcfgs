@@ -1,0 +1,67 @@
+set spoolfile	= imap://docent@localhost/INBOX
+set folder	= imap://docent@localhost/
+set move	= no
+
+set my_name	= "Maciej Lasyk"
+
+#set imap_check_subscribed
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = "~/.cache/mutt"
+set imap_keepalive = 300
+set mail_check = 60
+
+set send_charset="utf-8"
+
+set edit_headers=yes
+unmy_hdr *
+unset use_from
+unset use_domain
+unset user_agent
+my_hdr X-Info: Tricks are 4 kids silly rabbit
+my_hdr X-Operating-System: Multics / GE-645
+my_hdr User-Agent: Eudora
+
+set tmpdir="~/.cache/mutt"
+
+source ~/.mutt/colors.zenburn
+
+bind index "^" imap-fetch-mail
+set sleep_time = 0
+
+set sidebar_visible = yes
+set sidebar_sort = yes
+set sidebar_shortpath = yes
+set sidebar_delim='|'
+set sidebar_width=14
+
+mailboxes =INBOX =Sent =Archive =Junk =Spam =ZBK
+
+color sidebar_new brightblue black
+
+bind index { sidebar-prev
+bind index } sidebar-next
+bind index \" sidebar-open
+bind pager { sidebar-prev
+bind pager } sidebar-next
+bind pager \" sidebar-open
+
+macro index G 'toggle sidebar_visible'
+macro pager G 'toggle sidebar_visible'
+
+bind index,pager ^? previous-page
+
+set from="maciek@lasyk.info"
+set realname="Maciej Lasyk"
+set signature='~/.dotcfgs/.mutt_signature'
+
+source ~/.dotcfgs/.mutt_macros
+
+set strict_threads
+set sort=threads
+set sort_browser="reverse-date"
+set sort_aux=last-date-received
+unset collapse_unread
+
+bind index - collapse-thread
+bind index _ collapse-all
