@@ -14,9 +14,3 @@ defutf8 on
 
 shelltitle "$ |bash"
 msgminwait 0
-
-screen -t irc 0 irssi --connect irc.freenode.net
-screen -t finch 1 finch
-screen -t mutt 2 mutt
-screen -t zsh 3 hostname
-select 0
