@@ -1,5 +1,9 @@
-set spoolfile	= imap://docent@localhost/INBOX
-set folder	= imap://docent@localhost/
+set spoolfile   = imap://docent@localhost/INBOX
+set folder      = imap://docent@localhost/
+set mbox_type=Maildir
+set mask="!^\\.[^.]"
+set record="+INBOX"
+set postponed="+Drafts"
 set move	= no
 
 set my_name	= "Maciej Lasyk"
