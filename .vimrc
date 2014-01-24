@@ -46,3 +46,9 @@ augroup END
 
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
             \ [%l/%L\ (%p%%)
+
+" let's higlight any line over 79 characters:
+augroup vimrc_autocmds
+      autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+      autocmd BufEnter * match OverLength /\%79v.*/
+augroup END

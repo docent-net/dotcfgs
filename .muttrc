@@ -19,7 +19,7 @@ set send_charset="utf-8"
 
 set edit_headers=yes
 unmy_hdr *
-unset use_from
+set use_from = yes
 unset use_domain
 unset user_agent
 my_hdr X-Info: Tricks are 4 kids silly rabbit
@@ -55,7 +55,7 @@ macro pager G 'toggle sidebar_visible'
 
 bind index,pager ^? previous-page
 
-set from="maciek@lasyk.info"
+set from="Maciej Lasyk <maciek@lasyk.info>"
 set realname="Maciej Lasyk"
 set signature='~/.dotcfgs/.mutt_signature'
 
