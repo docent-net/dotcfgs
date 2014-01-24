@@ -21,12 +21,13 @@ map , gT
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "python pep8:
-set expandtab
+set expandtab       "Use softtabstop spaces instead of tab characters for indentation
 set textwidth=79
 set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set autoindent
+set softtabstop=4   "Indent by 4 spaces when pressing <TAB>
+set shiftwidth=4    "Indent by 4 spaces when using >>, <<, == etc.
+set autoindent      "Keep indentation from previous line
+set smartindent     "Automatically inserts indentation in some cases
 :syntax on
 
 nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
