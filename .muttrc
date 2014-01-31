@@ -7,8 +7,10 @@ set postponed="+Drafts"
 set move	= no
 
 set my_name	= "Maciej Lasyk"
+set from="Maciej Lasyk <maciek@lasyk.info>"
+set realname="Maciej Lasyk"
+set signature='~/.dotcfgs/.mutt_signature'
 
-#set imap_check_subscribed
 
 set header_cache = ~/.cache/mutt
 set message_cachedir = "~/.cache/mutt"
@@ -39,6 +41,9 @@ set sidebar_shortpath = yes
 set sidebar_delim='|'
 set sidebar_width=14
 
+macro index G 'toggle sidebar_visible'
+macro pager G 'toggle sidebar_visible'
+
 mailboxes =INBOX =Sent =Archive =Junk =Spam =ZBK
 
 color sidebar_new brightblue black
@@ -50,28 +55,37 @@ bind pager { sidebar-prev
 bind pager } sidebar-next
 bind pager \" sidebar-open
 
-macro index G 'toggle sidebar_visible'
-macro pager G 'toggle sidebar_visible'
-
 bind index,pager ^? previous-page
-
-set from="Maciej Lasyk <maciek@lasyk.info>"
-set realname="Maciej Lasyk"
-set signature='~/.dotcfgs/.mutt_signature'
-
-source ~/.dotcfgs/.mutt_macros
 
 set strict_threads
 set sort=threads
 set sort_browser="reverse-date"
 set sort_aux=last-date-received
-unset collapse_unread
 
+unset collapse_unread
 bind index - collapse-thread
 bind index _ collapse-all
+set collapse_unread=no
+set uncollapse_jump=yes
+folder-hook .         'push "<collapse-all>"'
+folder-hook .         'push ":set collapse_unread=no<enter>"'
 
 # address book:
 set alias_file=~/.mutt-alias
 source ~/.mutt-alias
 set query_command= "abook --mutt-query '%s'"
 macro index,pager A "<pipe-message>abook --add-email-quiet<return>" "add the sender address to abook"
+
+macro index A ":set confirmappend=no delete=yes\n<save-message>=archive\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+
+# GPG:
+source ~/.gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = FFA8AEEC
+set pgp_timeout = 3600
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
+
+# HTML:
+auto_view text/html     # view HTML automaticly
+alternative_order text/plain text/enriched text/html    # html mode would be the last
